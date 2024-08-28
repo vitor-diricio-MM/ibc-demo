@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>[AWS + .Monks] PAM DEMO</title>
+    <link rel="icon" type="image/svg+xml" href="assets/browser-icon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body>
+    <div class="section">
+        <div class="d-flex logos-wrapper">
+            <img src="./assets/aws-logo-white.png" class="aws-logo" />
+            <div class="vertical-line"></div>
+            <img src="./assets/monks-white.png" class="mm-logo" />
+        </div>
+    </div>
+
+    <div class="section-wrapper">
+        <div class="form-dashboard">
+            <h4 class="title-badge">configuration</h4>
+
+            <!-- CONTENT OPTION ROW -->
+            <div class="row" id="content-row">
+                <div class="col-12 col-md-5 col-left">
+                    <h4 class="step-title">Content</h4>
+                    <p class="step-description">Based on your database of content, choose one of them to create a
+                        artifact
+                    </p>
+                </div>
+                <div class="col-12 col-md-7 col-right">
+                    <select class="form-select" id="step-content" name="step-content" required>
+                        <option selected disabled>- Select an option</option>
+                        <!-- Here i should have options with all the file names (all mp4 files in this case) inside my 'possible_inputs' folder -->
+                        <!-- Whenever i select one of them in this select, i should have a preview of my video right below this -->
+                        <!-- DONE AND WORKING -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- VIDEO PREVIEW -->
+            <div id="video-preview"></div>
+
+
+            <!-- 
+            OTHER OUTPUTS 
+            THEY SHOULD ONLY BE DISPLAYED WHEN THE USER SELECT ONE OF THE OPTIONS IN THE 'CONTENT' SELECT ABOVE
+            (DONE AND WORKING)
+            -->
+
+            <!-- ARTIFACT TYPE ROW (SHOULD ONLY BE DISPLAYED WHEN ONE OF THE OPTIONS IS SELECTED IN THE 'CONTENT' SELECT) -->
+            <!-- DONE AND WORKING -->
+            <div class="row" id="artifact-type">
+                <div class="col-12 col-md-5 col-left">
+                    <h4 class="step-title">Artifact type</h4>
+                    <p class="step-description">Choose the kind of artifact you want to generate
+                    </p>
+                </div>
+                <div class="col-12 col-md-7 col-right">
+                    <select class="form-select" id="step-artifact-type" name="step-artifact-type" required>
+                        <option selected disabled>- Select an option</option>
+                        <option value="Imagery">Imagery</option>
+                        <option value="Synopsis">Synopsis</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- SYNOPSIS LANGUAGE ROW (SHOULD ONLY BE DISPLAYED WHEN THE OPTION SELECTED ON ARTIFACT TYPE SELECT IS 'Synopsis' ) -->
+            <!-- DONE AND WORKING -->
+            <div class="row" id="synopsis-language">
+                <div class="col-12 col-md-5 col-left">
+                    <h4 class="step-title">Synopsis language</h4>
+                    <p class="step-description">Choose the language of your synopsis
+                    </p>
+                </div>
+                <div class="col-12 col-md-7 col-right">
+                    <select class="form-select" id="step-synopsis-language" name="step-synopsis-language" required>
+                        <option selected disabled>- Select an option</option>
+                        <option value="Portuguese">Portuguese</option>
+                        <option value="English">English</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <!-- DISTRIBUTION ROW (SHOULD ONLY BE DISPLAYED WHEN ONE OF THE OPTIONS IS SELECTED IN THE 'CONTENT' SELECT) -->
+            <!-- DONE AND WORKING -->
+            <div class="row" id="distribution-row">
+                <div class="col-12 col-md-5 col-left">
+                    <h4 class="step-title">Distribution</h4>
+                    <p class="step-description">Choose where you want to distribute your artifact
+                    </p>
+                </div>
+                <div class="col-12 col-md-7 col-right">
+                    <select class="form-select" id="step-distribution" name="step-distribution" required>
+                        <option selected disabled>- Select an option</option>
+                        <option value="Amazon">Amazon Prime</option>
+                        <option value="itv">ITV</option>
+                        <option value="Netflix">Netflix</option>
+                    </select>
+                </div>
+            </div>
+
+
+
+
+            <div id="loader" class="loader"></div>
+
+            <!-- OK, NOW HE HAVE TWO OPTIONS
+            1. IF THE USER SELECTED 'Imagery' IN THE 'ARTIFACT TYPE' SELECT, HERE WE SHOULD DISPLAY IMAGES IN A CAROUSEL
+            I ALREADY HAVE THIS IMAGES IN MY 'possible_assets' FOLDER
+            THE FILE NAME LOGIC FOLLOWS THE SAME AS THE 'possible_inputs' FOLDER
+            WITH THAT, I MEAN THAT INSIDE 'possible_assets' I HAVE A 'jeff-bezos-all-hands' FOLDER AND INSIDE FOLDERS FOR THE DISTRIBUITON SELECT
+            (i.e ./possible_assets/jeff-bezos-all-hands/amazon/image1,2,3...) THAT CONTAINS ALL THE IMAGES WHEN THIS IS SELECTED IN THE 'CONTENT' SELECT
+            SAME FOR 'emily-in-paris'
+            I NEED TO THIS CAROUSEL TO BE DYNAMIC, SO WHEN I SELECT ONE OF THE OPTIONS IN THE 'CONTENT' AND 'DISTRIBUTION' SELECTS, THE IMAGES SHOULD BE DISPLAYED HERE
+            ADDITIONALLY IT NEEDS TO LOOK MODERN AND RESPONSIVE
+
+            2. IF THE USER SELECTED 'Synopsis' IN THE 'ARTIFACT TYPE' SELECT, HERE WE SHOULD DISPLAY A TEXT PRE-DEFINED
+            THE TEXT SHOULD BE IN THE LANGUAGE SELECTED IN THE 'SYNOPSIS LANGUAGE' SELECT
+            JUST AS THE SAME, I HAVE A FOLDER 'possible_synopsis' THAT CONTAINS 2 FOLDERS INSIDE 'portuguese' AND 'english'
+            INSIDE EACH ONE I HAVE A TXT FILE WITH THE TEXT FOR JEFF BEZOS ALL HANDS (jef-bezos-all-hands.txt) AND EMILY IN PARIS (emily-in-paris.txt)
+            THE TEXT SHOULD BE DISPLAYED IN A MODERN AND RESPONSIVE WAY
+            -->
+
+            <!-- <div id="image-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" id="carousel-inner"></div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#image-carousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#image-carousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div> -->
+
+            <div class="gallery-section">
+                <h2>Gallery Assets <i class="gallery-icon"></i></h2>
+                <div id="image-gallery" class="image-gallery"></div>
+                <div id="image-preview" class="image-preview"></div>
+                <button id="download-button" class="download-button" disabled>
+                    <i class="download-icon"></i> Download Selected
+                </button>
+            </div>
+
+
+            <!-- SYNOPSIS
+            BY DEFAULT IS HIDDEN 
+            -->
+            <div id="synopsis-display"></div>
+
+        </div>
+    </div>
+
+
+    <div class="section-footer">
+        <small class="copyright">© 2024 Media.Monks. Done by the E2E Business Consulting Team | BR ♡</small>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
