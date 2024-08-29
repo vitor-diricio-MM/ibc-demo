@@ -165,6 +165,7 @@ $(document).ready(function () {
   };
 
   // JUST DEFINING THE COMPONENTS
+  const $formDashboard = $(".form-dashboard");
   const $selectContent = $("#step-content");
   const $selectDistribution = $("#step-distribution");
   const $selectArtifactType = $("#step-artifact-type");
@@ -187,6 +188,8 @@ $(document).ready(function () {
   $gallerySection.hide();
   $synopsisDisplay.hide();
   $imagePreview.hide();
+
+  $formDashboard.fadeIn("slow");
 
   /**
    * =======================================================
