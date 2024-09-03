@@ -10,19 +10,19 @@ $(document).ready(function () {
 
   const imageData = {
     LOL_101: {
-      amazon: ["image1.jpg", "image2.jpg", "image3.jpg"],
-      itv: ["image4.jpg", "image5.jpg", "image6.jpg", "image7.jpg"],
-      netflix: ["image8.jpg", "image9.jpg", "image10.jpg"],
+      amazon: ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"],
+      itv: ["image6.jpg", "image6.jpg", "image7.jpg", "image8.jpg"],
+      netflix: ["imag9.jpg", "image10.jpg", "image11.jpg"],
     },
     LOL_102: {
       amazon: ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"],
-      itv: ["image5.jpg", "image6.jpg"],
-      netflix: ["image7.jpg", "image8.jpg"],
+      itv: ["image5.jpg", "image6.jpg", "image7.jpg"],
+      netflix: ["image8.jpg", "image9.jpg", "image10.jpg", "image11.jpg"],
     },
     LOL_103: {
       amazon: ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"],
-      itv: ["image5.jpg", "image6.jpg", "image7.jpg", "image8.jpg"],
-      netflix: ["image9.jpg", "image10.jpg", "image11.jpg", "image12.jpg"],
+      itv: ["image5.jpg", "image6.jpg", "image7.jpg"],
+      netflix: ["image8.jpg", "image9.jpg", "image10.jpg"],
     },
     LOL_104: {
       amazon: ["image1.jpg", "image2.jpg", "image3.jpg"],
@@ -30,14 +30,14 @@ $(document).ready(function () {
       netflix: ["image7.jpg", "image8.jpg", "image9.jpg"],
     },
     LOL_105: {
-      amazon: ["image1.jpg", "image2.jpg", "image3.jpg"],
-      itv: ["image4.jpg", "image5.jpg", "image6.jpg"],
-      netflix: ["image7.jpg", "image8.jpg", "image9.jpg", "image10.jpg"],
+      amazon: ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"],
+      itv: ["image5.jpg", "image6.jpg", "image7.jpg"],
+      netflix: ["image8.jpg", "image9.jpg", "image10.jpg"],
     },
     LOL_106: {
-      amazon: ["image1.jpg", "image2.jpg"],
-      itv: ["image3.jpg", "image4.jpg", "image5.jpg", "image6.jpg"],
-      netflix: ["image7.jpg", "image8.jpg", "image9.jpg", "image10.jpg"],
+      amazon: ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"],
+      itv: ["image5.jpg", "image6.jpg", "image7.jpg"],
+      netflix: ["image8.jpg", "image9.jpg", "image10.jpg"],
     },
   };
 
