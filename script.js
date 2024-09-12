@@ -10,34 +10,89 @@ $(document).ready(function () {
 
   const imageData = {
     LOL_101: {
-      amazon: ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"],
-      itv: ["image6.jpg", "image6.jpg", "image7.jpg", "image8.jpg"],
-      netflix: ["imag9.jpg", "image10.jpg", "image11.jpg"],
+      images: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg",
+        "image6.jpg",
+        "image7.jpg",
+        "image8.jpg",
+        "image9.jpg",
+        "image10.jpg",
+        "image11.jpg",
+      ],
     },
     LOL_102: {
-      amazon: ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"],
-      itv: ["image5.jpg", "image6.jpg", "image7.jpg"],
-      netflix: ["image8.jpg", "image9.jpg", "image10.jpg", "image11.jpg"],
+      images: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg",
+        "image6.jpg",
+        "image7.jpg",
+        "image8.jpg",
+        "image9.jpg",
+        "image10.jpg",
+        "image11.jpg",
+      ],
     },
     LOL_103: {
-      amazon: ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"],
-      itv: ["image5.jpg", "image6.jpg", "image7.jpg"],
-      netflix: ["image8.jpg", "image9.jpg", "image10.jpg"],
+      images: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg",
+        "image6.jpg",
+        "image7.jpg",
+        "image8.jpg",
+        "image9.jpg",
+        "image10.jpg",
+      ],
     },
     LOL_104: {
-      amazon: ["image1.jpg", "image2.jpg", "image3.jpg"],
-      itv: ["image4.jpg", "image5.jpg", "image6.jpg"],
-      netflix: ["image7.jpg", "image8.jpg", "image9.jpg"],
+      images: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg",
+        "image6.jpg",
+        "image7.jpg",
+        "image8.jpg",
+        "image9.jpg",
+      ],
     },
     LOL_105: {
-      amazon: ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"],
-      itv: ["image5.jpg", "image6.jpg", "image7.jpg"],
-      netflix: ["image8.jpg", "image9.jpg", "image10.jpg"],
+      images: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg",
+        "image6.jpg",
+        "image7.jpg",
+        "image8.jpg",
+        "image9.jpg",
+        "image10.jpg",
+      ],
     },
     LOL_106: {
-      amazon: ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"],
-      itv: ["image5.jpg", "image6.jpg", "image7.jpg"],
-      netflix: ["image8.jpg", "image9.jpg", "image10.jpg"],
+      images: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg",
+        "image6.jpg",
+        "image7.jpg",
+        "image8.jpg",
+        "image9.jpg",
+        "image10.jpg",
+      ],
     },
   };
 
@@ -155,7 +210,11 @@ $(document).ready(function () {
   $selectContent.change(function () {
     const selectedFile = $(this).val();
     if (selectedFile) {
-      $videoPreview.html(`<video controls>
+      const randomImageNumber = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+      $videoPreview.html(`<video controls poster="possible_assets/${selectedFile.replace(
+        ".mp4",
+        ""
+      )}/amazon/image${randomImageNumber}.jpg">
                             <source src="possible_inputs/${selectedFile}" type="video/mp4">
                             Your browser does not support the video tag.
                            </video>`);
@@ -234,7 +293,7 @@ $(document).ready(function () {
   }
 
   function loadImages(contentKey, distributionKey) {
-    const images = imageData[contentKey][distributionKey];
+    const images = imageData[contentKey].images;
 
     if (!images) {
       console.error("No images found for this content and distribution.");
